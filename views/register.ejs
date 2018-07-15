@@ -4,12 +4,21 @@
     <div class="flex-item">
         <div class="ui main text ">
             <div class="ui huge header">Sign Up!</div>
-            <form class="ui form" action="/register" method="POST">
+            <form class="ui form" action='/users/register' method="POST">
+                <div class="field">
+                    <input type="text" placeholder="Full Name" name="name">
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Email" name="email">
+                </div>
                 <div class="field">
                     <input type="text" placeholder="User Name" name="username">
                 </div>
                 <div class="field">
                     <input type="password" placeholder="Password" name="password">
+                </div>
+                <div class="field">
+                    <input type="password" placeholder="Confirm Password" name="password2">
                 </div>
                 <input class="ui violet big basic button" type="submit" value="Sign Up">
             </form>
