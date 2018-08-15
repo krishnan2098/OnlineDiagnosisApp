@@ -1,0 +1,15 @@
+<% include partials/LayoutHeader %>
+<% include partials/Navbar %>
+  <h1> <%= title %> </h1>
+  <% if(noMatch!== undefined){  %>
+    <h3>
+      <%= noMatch %>
+    </h3>
+  <% }%>    
+  <ul>
+    <% users.forEach(function(item){ %>
+      <li><a href="profile/"+:item._id ><%= item.name %></a></li>
+
+    <% })  %>
+  </ul>
+<% include partials/LayoutFooter %>
