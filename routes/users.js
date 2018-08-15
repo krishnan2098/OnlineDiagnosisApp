@@ -6,6 +6,12 @@ var passport = require('passport');
 //Bring in User models
 let User = require('../models/user');
 
+//
+
+
+
+
+
 //Show signup form
 router.get('/register', function(req, res){
     res.render("register");
@@ -87,5 +93,50 @@ router.get("/logout", function(req, res){
    req.flash('success', 'You are logged out');
    res.redirect("/");
 });
+
+//All Profiles page
+router.get('/', function(req,res){
+  if(req.query.search){
+    //Get Profiles by Search Query
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    User.find({name: regex},function(err,users){
+      if(err){
+        console.log(err);
+      }else{
+        var noMatch;
+        if(users.length<1){
+          noMatch = "No Users match your search";
+        }
+        res.render('allProfiles',{
+          title: 'All Users',
+          users: users,
+          noMatch: noMatch
+        });
+      }
+    });
+  } else{
+  //Get all the Profiles
+    User.find({},function(err,users){
+      if(err){
+        console.log(err);
+      }else{
+        res.render('allProfiles',{
+          title: 'All Users',
+          users:users
+        });
+      }
+    });
+  }
+});
+
+/*
+router.get('/profile',function(req,res){
+
+});
+*/
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;
