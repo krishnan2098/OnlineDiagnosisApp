@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-    Thread = require("threads.js");
+var Thread = require("threads.js");
 
 var seedData = [
 {

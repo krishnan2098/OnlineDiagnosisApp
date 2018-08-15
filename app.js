@@ -7,6 +7,8 @@ var config = require('./config/database')
 var passport = require("passport");
 var session = require('express-session');
 var expressValidator = require('express-validator');
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
 
 //Connect to DB
 mongoose.connect(config.database);
@@ -48,11 +50,12 @@ app.use(require("express-session")({
 }));
 
 //Express Messages middleware
-app.use(flash());
-app.use(function(req, res, next){
-  res.locals.message = require('express-messages')(req,res);
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
   next();
 });
+
 
 //Express validator
 app.use(expressValidator({
@@ -98,6 +101,8 @@ app.get('/dashboard', function(req, res){
     res.render('dashboard');
     console.log("Authentication success, reached dashboard route!");
 });
+
+
 /*
 //================
 //Discussion forums route
@@ -124,6 +129,12 @@ let users = require('./routes/users');
 app.use('/users', users);
 
 
+
+//let profiles = require('./routes/profile');
+//app.use('/profile', profiles);
+
 app.listen(5000, function(){
    console.log("Server has started at PORT:5000. Enter http://127.0.0.1:5000 or http://localhost:5000 to view")
 });
+
+server.listen(5000);
