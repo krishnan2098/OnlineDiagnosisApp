@@ -1,0 +1,34 @@
+<nav>
+    <div class="ui inverted segment">
+        <div class="ui inverted secondary pointing big menu container">
+            <a href="/" class="item">
+                Panic App
+            </a>
+            <a href="/" class="active item">
+                Home
+            </a>
+
+            <a class="item">
+                Messages
+            </a>
+
+
+            <div class="right menu">
+
+                    <a href="/dashboard" class="item">Dashboard</a>
+                    <a href="/users/profile" class="item">Profile<a>
+                    <a href="/users/logout" class="item">Log Out</a>
+
+            </div>
+
+            <div class="item">
+              <form action = "/users/" method="GET" class="form-inline">
+                  <div class= "form-group">
+                    <input type = 'text' name = 'search' placeholder = 'Search a profile' class="form-control">
+                    <input type = 'submit' value = 'search' class = "btn btn-default">
+                  </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</nav>

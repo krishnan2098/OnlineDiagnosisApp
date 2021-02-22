@@ -1,10 +1,19 @@
 <% include partials/LayoutHeader %>
-<% include partials/Navbar %>
+<% include partials/NavbarDash %>
 <% include partials/sidePanel %>
 <div class="ui grid">
     <div class="four wide column"></div>
     <div class="twelve wide column">
         <h1>Welcome, <%= currentUser.username %></h1>
+        <strong>User Id</strong> <%=currentUser.id %>
+        </br>
+        <strong>Name</strong> <%=currentUser.name %>
+        </br>
+        <strong>Email</strong> <%=currentUser.email %>
+
+
+
+
     </div>
 </div>
 
